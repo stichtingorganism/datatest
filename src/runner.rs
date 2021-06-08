@@ -177,6 +177,8 @@ fn render_files_test(desc: &FilesTestDesc, rendered: &mut Vec<TestDescAndFn>) {
                     should_panic: ShouldPanic::No,
                     // Cannot be used on stable: https://github.com/rust-lang/rust/issues/46488
                     allow_fail: false,
+                    compile_fail: false,
+                    no_run: false,
                     test_type: crate::test_type(desc.source_file),
                 },
                 testfn,
@@ -221,6 +223,8 @@ fn render_data_test(desc: &DataTestDesc, rendered: &mut Vec<TestDescAndFn>) {
                 ignore: desc.ignore,
                 should_panic: ShouldPanic::No,
                 allow_fail: false,
+                compile_fail: false,
+                no_run: false,
                 test_type: crate::test_type(desc.source_file),
             },
             testfn,
@@ -406,6 +410,8 @@ fn render_test_descriptor(
                     should_panic: desc.should_panic.into(),
                     // FIXME: should support!
                     allow_fail: false,
+                    compile_fail: false,
+                    no_run: false,
                     test_type: crate::test_type(desc.source_file),
                 },
                 testfn: TestFn::StaticTestFn(desc.testfn),
